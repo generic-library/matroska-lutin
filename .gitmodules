@@ -1,0 +1,3 @@
+[submodule "matroska"]
+	path = matroska
+	url = https://github.com/generic-library/matroska.git
