@@ -52,8 +52,6 @@ def create(target, module_name):
 	    'matroska/matroska/KaxSeekHead.h',
 	    'matroska/matroska/KaxVersion.h',
 	    'matroska/matroska/KaxCuesData.h',
-	    'matroska/matroska/c/libmatroska.h',
-	    'matroska/matroska/c/libmatroska_t.h',
 	    'matroska/matroska/KaxBlock.h',
 	    'matroska/matroska/FileKax.h',
 	    'matroska/matroska/KaxBlockData.h',
@@ -69,6 +67,15 @@ def create(target, module_name):
 	    'matroska/matroska/KaxSemantic.h',
 		],
 		destination_path="matroska")
+	my_module.add_header_file([
+	    'matroska/matroska/c/libmatroska.h',
+	    'matroska/matroska/c/libmatroska_t.h',
+		],
+		destination_path="matroska/c")
+	my_module.add_module_depend([
+	    'cxx',
+	    'ebml'
+	    ])
 	my_module.compile_version("C++", 2003)
 	return my_module
 
