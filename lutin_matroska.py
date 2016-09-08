@@ -72,7 +72,7 @@ def create(target, module_name):
 	    'matroska/matroska/c/libmatroska_t.h',
 		],
 		destination_path="matroska/c")
-	my_module.add_module_depend([
+	my_module.add_depend([
 	    'cxx',
 	    'ebml'
 	    ])
