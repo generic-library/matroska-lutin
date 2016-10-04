@@ -1,5 +1,5 @@
 #!/usr/bin/python
-import lutin.module as module
+import lutin.debug as debug
 import lutin.tools as tools
 
 
@@ -18,8 +18,7 @@ def get_maintainer():
 def get_version():
 	return [1,4,4]
 
-def create(target, module_name):
-	my_module = module.Module(__file__, module_name, get_type())
+def configure(target, my_module):
 	my_module.add_src_file([
 	    'matroska/src/KaxInfoData.cpp',
 	    'matroska/src/KaxCluster.cpp',
@@ -36,7 +35,7 @@ def create(target, module_name):
 	    'matroska/src/KaxCuesData.cpp',
 	    'matroska/src/KaxVersion.cpp',
 	    'matroska/src/KaxBlockData.cpp',
-		])
+	    ])
 	my_module.add_header_file([
 	    'matroska/matroska/KaxTag.h',
 	    'matroska/matroska/KaxConfig.h',
@@ -65,18 +64,18 @@ def create(target, module_name):
 	    'matroska/matroska/KaxAttached.h',
 	    'matroska/matroska/KaxClusterData.h',
 	    'matroska/matroska/KaxSemantic.h',
-		],
-		destination_path="matroska")
+	    ],
+	    destination_path="matroska")
 	my_module.add_header_file([
 	    'matroska/matroska/c/libmatroska.h',
 	    'matroska/matroska/c/libmatroska_t.h',
-		],
-		destination_path="matroska/c")
+	    ],
+	    destination_path="matroska/c")
 	my_module.add_depend([
 	    'cxx',
 	    'ebml'
 	    ])
 	my_module.compile_version("C++", 2003)
-	return my_module
+	return True
 
 
